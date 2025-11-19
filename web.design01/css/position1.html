@@ -1,0 +1,55 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2{
+            position: static;
+        }
+        h3{
+            position: relative;
+            top: 20px;
+            left: 300px;
+        }
+        div{
+            height: 200px;
+            width: 200px;
+            background-color: lightseagreen;
+            position: relative;
+            top: 500px;
+            left: 30px;
+        }
+        div h4{
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        h5{
+            position: fixed;
+            background-color: lightcoral;
+            top: 200px;
+            left: 500px;
+        }
+         header{
+            background-color: aqua;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>welcome to position</h1>
+    </header>
+    <h2>static position</h2>
+    <h3>relative position</h3>
+    <div>
+        <h4>absolute position</h4>
+    </div>
+    <h5>fixed position</h5>
+</body>
+</html>

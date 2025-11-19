@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <style>
+        header{
+            background-color: lightgray;
+        }
+        section{
+           min-height: 50vh;
+        }
+        #home{
+            background-color: lightcoral;
+        }
+        #about{
+            background-color: lightgreen;
+        }
+        #product{
+            background-color: lightskyblue;
+        }
+        #contact{
+            background-color: limegreen;
+        }
+        .row{
+            display: flex;
+            justify-content: space-around;
+
+        }
+        .col{
+            height: 50px;
+            width: 50px;
+            background-color: lime;
+            margin: 10px;
+        }
+        footer{
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <header>
+      <h2>Flipcart</h2>
+      <nav>
+        <a href="#home">home</a>
+        <a href="#about">About</a>
+        <a href="#product">Product</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button>signin</button>
+    </header>
+    <main>
+   <!-- home section -->
+    <section id="home">
+        <h1>Home section</h1>
+    </section>
+    <!-- about section -->
+     <section id="about">
+        <h1>About section</h1>
+     </section>
+     <!-- product section -->
+         <section id="product">
+        <h1>Product section</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col">col 1</div>
+                <div class="col">col 2</div>
+                <div class="col">col 3</div>
+                <div class="col">col 4</div>
+            </div>
+            <div class="row">
+                <div class="col">col 1</div>
+                <div class="col">col 2 </div>
+                <div class="col">col 3</div>
+                <div class="col">col 4</div>
+            </div>
+        </div>
+     </section>
+     <!-- contact section -->
+         <section id="contact">
+        <h1>Contact section</h1>
+     </section>
+    </main>
+    <footer>
+      <p>All rights reserver by me @ 2025</p>
+    </footer>
+</body>
+</html>

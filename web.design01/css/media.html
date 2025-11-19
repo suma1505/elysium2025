@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightcoral;
+        }
+        h1{
+            color: gray;
+        }
+        p{
+            color: aqua;
+            font-size: 30px;
+        }
+        /* tab size 620px to 1024px */
+        @media(min-width:620px) and (max-width:1024px){
+            body{
+                background-color: blueviolet;
+            }
+            h1{
+                color: lightseagreen;
+            }
+            p{
+                color: burlywood;
+                font-size: 60px;
+            }
+        }
+        /* mobile size 320px to 620px */
+        @media(min-width:320px) and (max-width:620px){
+            body{
+                background-color: chartreuse;
+            }
+            h1{
+                color: cadetblue;
+            }
+            p{
+                color: lightgoldenrodyellow;
+                font-size: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>welcome to media query</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque cum autem accusamus totam quia reprehenderit doloribus consectetur laborum est laboriosam nostrum iure optio maxime placeat aperiam, odit recusandae voluptatum quaerat?</p>
+    </center>
+</body>
+</html>

@@ -1,0 +1,26 @@
+/* universal selector */
+*{
+    font-family: fantasy;
+    color: green;
+}
+/* tag selector */
+h1{
+    color: blue;
+}
+/*group selector */
+h2,h3{
+    color: violet;
+}
+/* id selector */
+#one{
+    color: darkorange;
+}
+/* class selector */
+.one{
+    color: red;
+}
+/* adjacent selector */
+div h1{
+    color: blueviolet;
+}
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .container{
+        display: grid;
+        grid-template-rows: 10vh 80vh 10vh;
+        grid-template-columns:repeat(5,1fr);
+        grid-template-areas: 'head head head head head'
+        'aside aside main main main'
+        'footer footer footer footer footer';
+       }
+       header{
+        grid-area: head;
+        grid-column: span(1/-1);
+        background-color: lightblue;
+       }
+       aside{
+        grid-area: aside;
+        background-color: lightpink;
+       }
+       main{
+        grid-area: main;
+        background-color: aquamarine;
+       }
+       footer{
+        grid-area: footer;
+        grid-column: span(1/-1);
+        background-color: lightseagreen;
+       }
+    </style>
+   
+</head>
+<body>
+    <div class="container">
+        <header>header section</header>
+        <aside>side section</aside>
+        <main>main section</main>
+        <footer>footer section</footer>
+    </div>
+
+</body>
+</html>

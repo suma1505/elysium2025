@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table,th,td{
+            border: 3px solid black;
+        }
+        table th{
+            padding: 13px;
+            font-size: 30px;
+            background-color: rgb(181, 181, 201);
+        } 
+        table td{
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 15px;
+        }
+        table tr:nth-child(odd){
+            background-color: rgb(193, 152, 231);
+        }
+        table tr:nth-child(even){
+            background-color: rgb(202, 141, 141);
+        }
+        table tr:hover{
+            background-color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <table border="">
+        <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>qty</th>
+        </tr>
+        <tr>
+            <td>sugar</td>
+            <td>40</td>
+            <td>1 kg</td>
+        </tr>
+        <tr>
+            <td>rice</td>
+            <td>50</td>
+            <td>1/2 kg</td>
+        </tr>
+        <tr>
+            <td>wheat</td>
+            <td>30</td>
+            <td>1 kg</td>
+        </tr>
+        <tr>
+            <td>floor</td>
+            <td>30</td>
+            <td>1 kg</td>
+        </tr>
+        <tr>
+            <td>fruits</td>
+            <td>30</td>
+            <td>1 kg</td>
+        </tr>
+    </table>
+    </center>
+</body>
+</html>

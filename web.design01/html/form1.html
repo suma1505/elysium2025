@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+   <div class="container">
+      <div class="row">
+         <div class="col">
+            <div class="alert alert-primary" role="alert">
+               A simple primary alert—check it out!
+            </div>
+         </div>
+         <div class="col">
+            <form action="">
+            <h1>login form</h1>
+            <div class="mb-3">
+               <label for="exampleFormControlInput1" class="form-label">Email address</label>
+               <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+               <label for="exampleFormControlInput1" class="form-label">password</label>
+               <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="enter password">
+            </div><br>
+            <div class="form-floating mb-3">
+               <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+               <label for="floatingInput">Email address</label>
+            </div><br>
+            <div class="mb-3">
+               <label for="exampleFormControlInput1" class="form-label">Resume</label>
+               <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="enter password here">
+            </div>
+            <label for="exampleFormControlclass="form-label">Country:</label>
+            <select class="select country" aria-label="Default select example">
+               <option selected>select country</option>
+               <option value="1">india</option>
+               <option value="2">china</option>
+               <option value="3">england</option>
+            </select><br><br>
+            <label for="exampleFormControl" class="form-label">Course:</label>
+            <div class="form-check">
+               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+               <label class="form-check-label" for="flexCheckDefault">java</label>
+            </div>
+            <div class="form-check">
+               <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+               <label class="form-check-label" for="flexCheckChecked">python</label>
+            </div>
+               <label for="customRange1" class="form-label">Range:</label>
+               <input type="range" class="form-range" id="customRange1"><br>
+               <label for="exampleFormControlclass="form-label">Class mode:</label>
+            <div class="form-check">
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+               <label class="form-check-label" for="flexRadioDefault1">online</label>
+            </div>
+            <div class="form-check">
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+               <label class="form-check-label" for="flexRadioDefault2">offline</label>
+            </div><br>
+            <div class="mb-3">
+               <label for="exampleFormControlTextarea1" class="form-label">address:</label>
+               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div><br>
+               <a href="" class="btn btn-primary">sign in</a>
+            </form>
+         </div>
+         <div class="col">
+            <div class="card" style="width: 18rem;">
+               <img src="/assets/css.jpg" class="card-img-top" alt="...">
+               <div class="card-body">
+                  <h5 class="card-title">css</h5>
+                  <div class="accordion" id="accordionExample">
+                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Accordion Item #1
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                           <div class="accordion-body">
+                              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                           </div>
+                        </div>
+                     </div>
+                     <p>ratings:4.5/5</p>
+                     <a href="#" class="btn btn-primary">buy now</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>   
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>

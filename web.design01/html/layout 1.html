@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header{
+            background-color: purple;
+        }
+        section{
+            min-height: 50vh;
+        }
+        #home{
+            background-color: lime;
+        }
+        #about{
+            background-color: blueviolet;
+        }
+        #product{
+            background-color: coral;
+        }
+        #contact{
+            background-color: fuchsia;
+        }
+        .row{
+            display: flex;
+            justify-content: space-around;
+        }
+        .col{
+            height: 50px;
+            width: 50px;
+            background-color: blue;
+            margin: 10px;
+        }
+        footer{
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>flipkart</h1>
+        <nav>
+          <a href="#home">home</a>
+          <a href="#about">about</a>
+          <a href="#product">product</a>
+          <a href="#contact">contact</a>
+        </nav>
+    </header>
+    <main>
+        <!-- home section -->
+        <section id="home">
+            <h1>home section</h1>
+        </section>
+        <!-- about section -->
+        <section id="about">
+            <h1>about section</h1>
+        </section>
+        <!-- product section -->
+        <section id="product">
+            <h1>product section</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">washing machine</div>
+                    <div class="col">led tv</div>
+                    <div class="col">dish washer</div>
+                </div>
+                <div class="row">
+                    <div class="col">washing machine</div>
+                    <div class="col">led tv</div>
+                    <div class="col">dish washer</div>
+                </div>
+                <div class="row">
+                    <div class="col">washing machine</div>
+                    <div class="col">led tv</div>
+                    <div class="col">dish washer</div>
+                </div>
+            </div>
+        </section>
+        <!-- contact section -->
+        <section id="contact">
+            <h1>contact section</h1>
+        </section>
+    </main>
+    <footer>
+            <p>All rights reserver by me @ 2025</p>
+    </footer>
+</body>
+</html>

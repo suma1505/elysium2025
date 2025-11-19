@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            display: none;
+        }
+        h1{
+            display: block;
+            background-color: lightcoral;
+        }
+        h2{
+            display: inline;
+            background-color: lightgreen;
+        }
+        b{
+            display: inline-block;
+            background-color: lightgrey;
+            width: 100px;
+            height: 40px;
+        }
+        header{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: lightcoral;
+          
+        }
+        header nav a{
+            margin: 10px;
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+        .col{
+            height: 300px;
+            width: 300px;
+            background-color: lightpink;
+            margin: 10px;
+           
+        }
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>welcome to display</p>
+    <h1>Elemnt one</h1>
+    <h2>New element component</h2>
+    <b>Bold text</b>
+
+    <header>
+        <h4>flipcart</h4>
+        <nav>
+            <a href="">home</a>
+            <a href="">About</a>
+            <a href="">Contact</a>
+        </nav>
+        <button>submit</button>
+    </header>
+
+    <div class="row">
+        <div class="col">col 1</div>
+        <div class="col">col 2</div>
+        <div class="col">col 3</div>
+    </div>
+</body>
+</html>

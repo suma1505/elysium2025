@@ -1,0 +1,41 @@
+/* universel selctor */
+
+*{
+    font-family: fantasy;
+}
+
+/* tag selctor  */
+
+h1{
+    color: red;
+}
+
+/* group selctor */
+
+h2,h3{
+    color: blue;
+}
+
+/* id selector */
+
+#one{
+    color: gray;
+}
+
+/* class selctor */
+.one{
+    color: chartreuse;
+}
+
+/* adjestent selctor */
+
+div h1{
+    color: blueviolet;
+}
+ul li{
+    color: goldenrod;
+}
+div img{
+    height: 400px;
+    width: 400px;
+}

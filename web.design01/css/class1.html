@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       p::before{
+            content: "welcome";
+            color: red; 
+       }
+       p::after{
+            content: "thanks";
+            color: coral;
+       }
+       p::first-letter{
+            font-size: 40px;
+            margin-left: 30px;
+       }
+       p::first-line{
+            color: aqua;
+       }
+       p::selection{
+            background-color: lightcoral;
+            color: lightgreen;
+       }
+       input::placeholder{
+            color: red;
+       }
+       input[type="text"]{
+            border: 3px solid black;
+       }
+       input[type="password"]{
+            border: 3px solid blueviolet;
+       }
+       a[href="#"]{
+            font-size: 20px;
+            color: brown;
+       }
+       a[href="home"]{
+            font-size: 10px;
+            color: aqua;
+       }
+       button{
+            background-color: lightblue;
+            transition: all 3s linear;
+       }
+       button:hover{
+            background-color: darksalmon;
+            color: white;
+       }
+       li:nth-child(odd){
+            color: fuchsia;
+       }
+       li:nth-child(even){
+            color: green;
+       }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quibusdam voluptatibus distinctio quam eveniet doloremque sit doloribus illo, minus velit?</p>
+    <input type="text" name="" id="" placeholder="enter username">
+    <input type="password" name="" id="" placeholder="enter password">
+    <a href="#">welcome</a> <br>
+    <a href="#home">home</a><br>
+    <button>submit</button>
+    <ul>
+        <li>list 1</li>
+        <li>list 2</li>
+        <li>list 3</li>
+        <li>list 4</li>
+    </ul>
+</body>
+</html>
