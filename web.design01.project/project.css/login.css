@@ -1,0 +1,26 @@
+body{
+    background: url(/assets/about.jpg);
+    background-repeat: no-repeat;
+    background-size:cover ;
+    background-position: center;
+}
+.one{
+   margin: 60px;
+   margin-left: 400px;
+}
+.one a{
+    text-decoration: none;
+    background-color: aquamarine;
+    padding: 12px;
+    border-radius: 10px;
+    margin-right: 40px;
+}
+.one a:hover{
+    background-color: blue;
+    color: white;
+    font-size: 15px;
+}
+.one label{
+    font-size: 20px;
+    font-style: italic;
+}
