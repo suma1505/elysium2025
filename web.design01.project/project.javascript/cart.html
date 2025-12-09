@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <img src="./images/logo.png" alt="" height="50px" width="50px">
+      <nav>
+        <a href="#home">home</a>
+        <a href="#about">about</a>
+        <a href="#product">product</a>
+        <a href="#contact">contact</a>
+      </nav>
+    <a href="./index.html" class="cart-link">Back to Cart</a>
+  </header>
+
+    <h1>Your cart</h1>
+    <div id="cart-container"></div>
+    <h2 id="total"></h2>
+    <button onclick="checkout()" class="checkout">
+    checkout
+    </button>
+  <footer>
+    All rights reserved by me @2025
+  </footer>
+
+</body>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function displayCart(){
+  const container = document.getElementById("cart-container");
+  container.innerHTML = "";
+
+  if(cart.length === 0){
+    container.innerHTML = "<h2>Cart is Empty</h2>";
+    document.getElementById("total").innerText = "";
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((item,index)=>{
+    total += item.price * item.qty;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.image}">
+        <h3>${item.name}</h3>
+        <p>&#8377;${item.price}</p>
+
+        <button onclick="decrease(${index})">-</button>
+        <span>${item.qty}</span>
+        <button onclick="increase(${index})">+</button>
+
+        <button onclick="removeItem(${index})" class="remove">
+          Remove
+        </button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = "Total : Rs." + total;
+}
+
+function increase(index){
+  cart[index].qty++;
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+function decrease(index){
+  if(cart[index].qty > 1){
+    cart[index].qty--;
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+function checkout(){
+    if(cart.length === 0){
+     alert("No product in cart")
+    }else{
+    alert("Order Placed Successfully ");
+  localStorage.removeItem("cart");
+  cart = [];
+  displayCart();
+  }
+  
+}
+
+displayCart();
+</script>
+</html>

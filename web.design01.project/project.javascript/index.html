@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <header>
+        <img src="./images/logo.png" alt="" height="50px" width="50px">
+        <nav>
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#product">product</a>
+            <a href="#contact">contact</a>
+        </nav>
+        <a href="./cart.html" class="cart-link">Go to Cart</a>
+    </header>
+
+    <h2 style="text-align: center;">Home page</h2>
+    <section id="home">
+        <input type="email" name="" id="" placeholder="enter email address">
+        <a href="">Get Start</a>
+    </section>
+
+    <h2 style="text-align: center;">About Page</h2> 
+    <section id="about">
+        <div class="row">
+            <div class="col">
+                <img src="./images/logo.png" alt="">
+            </div>
+            <div class="col">
+                <h2>About us</h2>
+                <p>Amazon is guided by four principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking. We strive to be Earth’s most customer-centric company, Earth’s best employer, and Earth’s safest place to work.</p>
+                <a href="">know more</a>
+            </div>
+        </div>
+    </section>
+    
+    <h1 style="text-align: center;">Product Page</h1>
+   <section id="product"> 
+        <div class="card">
+            <img src="./images/headset.jpg" alt="">
+            <h3>Headset</h3>
+            <p>&#8377; 1000</p>
+            <button onclick="addToCart(1,'Headset',1000,'images/headset.jpg')">
+                Add to Cart
+            </button>
+        </div>
+        
+        <div class="card">
+            <img src="./images/laptop.jpg" alt="">
+            <h3>laptop</h3>
+            <p>&#8377; 30000</p>
+            <button onclick="addToCart(2,'laptop',30000,'images/laptop.jpg')">
+                Add to Cart
+            </button>
+        </div>
+         
+        <div class="card">
+            <img src="./images/iphone.jpg" alt="">
+            <h3>iphone</h3>
+            <p>&#8377; 50000</p>
+            <button onclick="addToCart(3,'iphone',50000,'images/iphone.jpg')">
+                Add to Cart
+            </button>
+        </div>
+        
+        <div class="card">
+            <img src="./images/watch.jpg" alt="">
+            <h3>watch</h3>
+            <p>&#8377; 10000</p>
+            <button onclick="addToCart(4,'watch',10000,'images/watch.jpg')">
+                Add to Cart
+            </button>
+        </div>
+        
+        <div class="card">
+            <img src="./images/shoe.jpg" alt="">
+            <h3>Shoe</h3>
+            <p>&#8377; 5000</p>
+            <button onclick="addToCart(5,'shoe',5000,'images/shoe.jpg')">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <img src="./images/narzo.webp" alt="">
+            <h3>Narzo</h3>
+            <p>&#8377; 50000</p>
+            <button onclick="addToCart(6,'narzo',50000,'images/narzo.webp')">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <img src="./images/waching machine.jpeg" alt="">
+            <h3>Waching machine</h3>
+            <p>&#8377; 20000</p>
+            <button onclick="addToCart(7,'waching machine',20000,'images/waching machine.jpeg')">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <img src="./images/fridge.jpeg" alt="">
+            <h3>fridge</h3>
+            <p>&#8377; 15000</p>
+            <button onclick="addToCart(8,'fridge',15000,'images/fridge.jpeg')">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <img src="./images/poco.webp" alt="">
+            <h3>Poco</h3>
+            <p>&#8377; 25000</p>
+            <button onclick="addToCart(9,'poco',25000,'images/poco.webp')">
+                Add to Cart
+            </button>
+        </div>
+   </section>
+    <section id="contact">
+        <div class="row">
+            <div class="col">
+                <img src="./images/contact.jpeg" alt="">
+            </div>
+            <div class="col">
+                <h2>Contact Form</h2>
+                <form action="">
+                    <label for="">Email:
+                        <input type="email" name="" id="" placeholder="enter email address">
+                    </label><br><br>
+                    <label for="">Message:
+                        <textarea name="" id="" placeholder="enter your message"></textarea>
+                    </label><br><br>
+                    <button>submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        All rights reserved by me @2025
+    </footer>
+
+</body>
+<script>
+function addToCart(id,name,price,image){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let product = cart.find(item => item.id === id);
+
+    if(product){
+        product.qty++;
+    }else{
+        cart.push({id,name,price,image,qty:1})
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to cart");
+}
+</script>
+</html>
