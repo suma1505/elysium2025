@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>welcome</h1>
+    <button id="btn">submit</button>
+
+    <form action="" id="submit">
+        <input type="text" placeholder="enter your name" name="" id="name">
+        <button id="button">submit</button>
+    </form>
+    <p id="msg"></p>
+
+</body> 
+<script>
+    document.getElementById("btn").addEventListener("click",function(){
+        alert("button is click now")
+    })
+
+    document.getElementById("submit").addEventListener("submit",function(e){
+        e.preventDefault()
+        document.getElementById("button").addEventListener("click",function(){
+        let name=document.getElementById("name").value
+
+        document.getElementById("msg").innerHTML=`<i>my name is ${name}</i>`
+        })
+    })
+</script>
+</html>

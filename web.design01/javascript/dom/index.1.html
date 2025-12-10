@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hello">hello javascript</h1>
+    <button onclick="changeText()">change</button>
+    <p id="para">this is dom manipulation</p>
+    <b class="one">submit</b>
+    <i class="one">this is italic</i> 
+
+</body>
+
+<script>
+    function changeText(){
+        let value=document.getElementById("hello")
+        value.innerHTML="<i>this is changed by dom manipulation</i>"
+        value.style.color="red"
+    }
+    let newelemnt=document.createElement("h1")
+        newelemnt.textContent="welcome to dom"
+        document.body.appendChild(newelemnt)
+        document.getElementById("para").remove()
+</script> 
+</html>                           

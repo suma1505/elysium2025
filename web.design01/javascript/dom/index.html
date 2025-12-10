@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="/web.design01.project/project.css/assets/html.jpg" alt="">
+            <h3>Name:HTML</h3>
+            <h4>Price:<span>599</span></h4>
+        <div>
+            <button onclick="decrease()">-</button>
+            <span id="value">1</span>
+            <button onclick="increase()">+</button>       
+        </div>
+        <h5>Total Price:<span id="final">599</span></h5>
+        <button onclick="purchase()">buy</button>
+    </div>    
+</body>
+<script>
+        let qty=1
+        const price=599
+
+        function increase(){
+            qty++
+            updatefunction()
+        }
+        function decrease(){
+            if(qty>1){
+                qty--
+                updatefunction()
+            }
+        }
+        function updatefunction(){
+            document.getElementById("final").innerText=qty*price
+            document.getElementById("value").innerText=qty
+        }
+        function purchase(){
+            alert(`course purchase success with ${qty*price}`)
+        }
+</script>
+</html>

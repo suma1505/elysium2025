@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../su.elysium.with.guidence"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "su.elysium"
+	}
+}
