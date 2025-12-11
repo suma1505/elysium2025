@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<style>
+    .highlight { background: yellow; padding: 5px; }
+    #box { width: 150px; height: 80px; background: lightblue; margin: 10px; }
+</style>
+<body>
+        <p id="para">Original Text</p>
+        <button id="changeText">Change Text</button>
+        <button id="changeHtml">Change HTML</button>
+        <br><br>
+
+        <input type="text" id="name" placeholder="Enter name">
+        <button id="setValue">Set Value</button>
+
+        <br><br>
+        <ul id="list">
+            <li>Apple</li>
+            <li>Mango</li>
+        </ul>
+            <button id="addItem">Add Item</button>
+            <button id="clearList">Clear List</button>
+
+        <br><br>
+
+        <a id="link" href="https://example.com">Visit Site</a>
+        <button id="changeLink">Change Link</button>
+
+        <br><br>
+        <div id="box">Box</div>
+        <button id="toggleClass">Toggle Highlight</button>
+</body>
+<script>
+    $("#changeText").click(function(){
+        $("#para").text("dom manipulation .text()");
+    });
+    $("#changeHtml").click(function(){
+        $("#para").html("<i>dom manipulation .html()</i>");
+    });
+    $("#setValue").click(function(){
+        $("#name").val("hitler");
+    });
+
+    $("#addItem").click(function(){
+        $("#list").append("<li>New Item</li>");
+    });
+    $("#clearList").click(function(){
+        $("#list").empty();
+    });
+        $("#changeLink").click(function(){
+        $("#link").attr("href", "https://google.com").text("Go to Google");
+    });
+
+    $("#toggleClass").click(function(){
+        $("#box").toggleClass("highlight");
+    });
+
+</script>
+</html>

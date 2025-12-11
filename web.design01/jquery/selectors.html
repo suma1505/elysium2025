@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selectors</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="title">welcome</h1>
+    <p class="highlight">First Paragraph</p>
+    <p>second paragraph</p>
+    <input type="text" name="" id="">
+    <input type="password" name="" id="">
+    <ul>
+        <li>apple</li>
+        <li>banana</li>
+        <li>orange</li>
+        <li>mango</li>
+    </ul>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#title").css("color","blue")       
+        $(".highlight").css("background","blue")
+        $("p").css("font-size","20px")
+        $("input[type='text']").val("Hello jQuery");    
+        $("li:even").css("background", "red");       
+        $("li:odd").css("background", "lightblue");        
+    })
+</script>
+</html>

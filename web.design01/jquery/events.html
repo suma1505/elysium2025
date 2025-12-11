@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<style>
+    #box{
+        height: 100px;
+        width: 100px;
+        background-color: lightblue;
+        border: 3px solid blue;
+    }
+</style>
+<body>
+    <button id="btn">single click</button>
+    <div id="box"> Double Click</div>
+
+    <input type="text" id="input">
+    <p id="msg"></p>
+
+    <select id="dropdown">
+        <option value="">Select Fruit</option>
+        <option value="Apple">Apple</option>
+        <option value="Banana">Banana</option>
+    </select>
+    <form id="form">
+        <input type="text" id="name" placeholder="Enter name">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            alert("button clicked")
+        })
+            $("#box").dblclick(function(){
+            $(this).css("background", "orange");
+        });
+        
+            $("#input").keydown(function(){
+            $("#msg").text("Key Down");
+        });
+            $("#input").keyup(function(){
+            $("#msg").text("Key Up");
+        });
+
+            $("#input").focus(function(){
+            $(this).css("background", "lightyellow");
+        });
+
+            $("#input").blur(function(){
+            $(this).css("background", "white");
+        });
+    
+            $("#dropdown").change(function(){
+            $("#msg").text("Selected: " + $(this).val());
+        });
+
+            $("#form").submit(function(e){
+            e.preventDefault();
+            alert("Form submitted with name: " + $("#name").val());
+        });
+    })
+</script>
+</html>
