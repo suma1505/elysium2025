@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- show value -->
+        <h2>enter your name</h2>
+        <input type="text" name="" id="name">
+        <button id="show">show</button>
+        <p id="output"></p>
+
+     <!-- password validation -->
+        <h2>Create Password:</h2>
+        <input type="password" id="pass">
+        <button id="check">Check</button>
+        <p id="msg"></p>
+
+      <!-- gender selection -->
+        <h3>Select Gender:</h3>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+        <p id="choice"></p>
+
+      <!-- terms and condition -->
+        <h3>Register Form</h3>
+        <input type="checkbox" id="terms"> I agree to terms & conditions
+        <br><br>
+        <button id="submit" disabled>Submit</button>
+
+</body>
+<script>
+    $(document).ready(function(){
+      $("#show").click(function(){
+        let val = $("#name").val();
+        $("#output").text("Hello, " + val + " !");
+      });
+
+      $("#check").click(function(){
+        let pwd = $("#pass").val();
+        if(pwd.length >= 6){
+          $("#msg").text("✅Password is strong").css("color","green");
+        } else {
+          $("#msg").text(" Password must be at least 6 characters").css("color","red");
+        }
+      });
+
+      $("input[name='gender']").change(function(){
+        let selected = $("input[name='gender']:checked").val();
+        $("#choice").text("You selected: " + selected);
+      });
+
+      $("#terms").change(function(){
+        if($(this).is(":checked")){
+          $("#submit").prop("disabled", false);
+        } else {
+          $("#submit").prop("disabled", true);
+        }
+      });
+
+    });
+
+</script>
+</html>

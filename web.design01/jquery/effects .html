@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <style>
+            #box{
+                height: 100px;
+                width: 100px;
+                background-color: aqua;
+                position: relative;
+                margin: 20px;
+            }
+            button{
+                margin: 5px;
+            }
+        </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <!-- show -->
+    <button id="hideBtn">Hide</button>
+    <button id="showBtn">Show</button>
+    <button id="toggleBtn">Toggle</button><br><br>
+
+    <!-- fade -->
+     <button id="fadeOutBtn">fade Out</button>
+     <button id="fadeInBtn">fade In</button>
+     <button id="fadeToggleBtn">fadeToggle</button>
+     <button id="fadeToBtn">fade To</button><br><br>
+
+     <!-- slide -->
+      <button id="slideUpBtn">Slide Up</button>
+      <button id="slideDownBtn">Slide Down</button>
+      <button id="slideToggleBtn">Slid Toggle</button><br><br>
+
+      <!-- animate -->
+       <button id="animateBtn">Animate</button>
+</body>
+<script>
+    $(document).ready(function(){
+        // hide
+        $("#hideBtn").click(function(){
+            $("#box").hide()
+        })
+        $("#showBtn").click(function(){
+            $("#box").show()
+        })
+        $("#toggleBtn").click(function(){
+            $("#box").toggle()
+        })
+
+        // fade
+        $("#fadeOutBtn").click(function(){
+            $("#box").fadeOut(1000)
+        })
+        $("#fadeInBtn").click(function(){
+            $("#box").fadeIn(1000)
+        })
+        $("#fadeToggleBtn").click(function(){
+            $("#box").fadeToggle(1000)
+        })
+        $("#fadeToBtn").click(function(){
+            $("#box").fadeTo(1000)
+        })
+
+        // slide
+          $("#slideUpBtn").click(function(){
+            $("#box").slideUp(1000)
+        })
+          $("#slideDownBtn").click(function(){
+            $("#box").slideDown(1000)
+        })
+          $("#slideToggleBtn").click(function(){
+            $("#box").slideToggle(1000)
+        })
+
+        // animate
+            $("#animateBtn").click(function(){
+                $("#box").animate({
+                left: '250px',
+                opacity: 0.3,
+                width: '200px',
+                height: '200px'
+            }, 1000)
+        })
+    })
+</script>
+</html>
