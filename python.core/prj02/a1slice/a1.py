@@ -1,0 +1,23 @@
+alpha = "abcdefghij"
+print(alpha[::-1])
+print(alpha[4::-1])
+print(alpha[:4:-1])
+print(alpha[::-4])
+print(alpha[8::-1])
+print(alpha[8:4:-1])
+print(alpha[9:8:-1])
+print(alpha[0::-1])
+print(alpha[1::-1])
+print(alpha[3::-1])
+'''
+jihgfedcba
+edcba
+jihgf
+jfb
+ihgfedcba
+ihgf
+j
+a
+ba
+dcba
+'''
