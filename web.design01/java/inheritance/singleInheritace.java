@@ -7,6 +7,7 @@ public class singleInheritace {
         }
     }
     public static class dog extends animal {
+       
         void bark(){
             System.out.println("barking");
         }  
