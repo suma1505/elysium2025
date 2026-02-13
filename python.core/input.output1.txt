@@ -1,0 +1,608 @@
+#01
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| dbsu               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+#02
+MariaDB [(none)]> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.000 sec)
+
+#03
+MariaDB [(none)]> use dbsu;
+Database changed
+
+#04
+
+MariaDB [(none)]> use dbsu;
+Database changed
+MariaDB [dbsu]> select database();
++------------+
+| database() |
++------------+
+| dbsu       |
++------------+
+1 row in set (0.000 sec)
+
+#05
+MariaDB [dbsu]> show tables;
+Empty set (0.001 sec)
+
+#06
+MariaDB [dbsu]> drop table if exists tblesa;
+Query OK, 0 rows affected, 1 warning (0.008 sec)
+
+
+#09
+MariaDB [dbsu]> create table if not exists tblesa
+    -> (
+    -> eid int primary key auto_increment
+    -> ) auto_increment = 1001;
+Query OK, 0 rows affected (0.006 sec)
+
+
+#10
+MariaDB [dbsu]> show tables;
++----------------+
+| Tables_in_dbsu |
++----------------+
+| tblesa         |
++----------------+
+1 row in set (0.001 sec)
+
+#11MariaDB [dbsu]> select * from tblesa;
+Empty set (0.000 sec)
+
+#12
+MariaDB [dbsu]> select count(*) from tblesa;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.000 sec)
+
+
+#13
+MariaDB [dbsu]> desc tblesa;
++-------+---------+------+-----+---------+----------------+
+| Field | Type    | Null | Key | Default | Extra          |
++-------+---------+------+-----+---------+----------------+
+| eid   | int(11) | NO   | PRI | NULL    | auto_increment |
++-------+---------+------+-----+---------+----------------+
+1 row in set (0.016 sec)
+
+
+#14
+MariaDB [dbsu]> desc tblesa;
++-------+---------+------+-----+---------+----------------+
+| Field | Type    | Null | Key | Default | Extra          |
++-------+---------+------+-----+---------+----------------+
+| eid   | int(11) | NO   | PRI | NULL    | auto_increment |
++-------+---------+------+-----+---------+----------------+
+1 row in set (0.012 sec)
+
+
+#15
+MariaDB [dbsu]> alter table tblesa
+    -> add column ename varchar(5) not null check(length(trim(ename)) > 0);
+Query OK, 0 rows affected (0.018 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+#16MariaDB [dbsu]> desc tblesa;
++-------+------------+------+-----+---------+----------------+
+| Field | Type       | Null | Key | Default | Extra          |
++-------+------------+------+-----+---------+----------------+
+| eid   | int(11)    | NO   | PRI | NULL    | auto_increment |
+| ename | varchar(5) | NO   |     | NULL    |                |
++-------+------------+------+-----+---------+----------------+
+2 rows in set (0.017 sec)
+
+#17
+MariaDB [dbsu]> alter table tblesa
+    -> add column npay decimal(10,2);
+Query OK, 0 rows affected (0.025 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+#18
+MariaDB [dbsu]> desc tblesa;
++-------+---------------+------+-----+---------+----------------+
+| Field | Type          | Null | Key | Default | Extra          |
++-------+---------------+------+-----+---------+----------------+
+| eid   | int(11)       | NO   | PRI | NULL    | auto_increment |
+| ename | varchar(5)    | NO   |     | NULL    |                |
+| npay  | decimal(10,2) | YES  |     | NULL    |                |
++-------+---------------+------+-----+---------+----------------+
+3 rows in set (0.010 sec)
+
+
+#19
+
+MariaDB [dbsu]> alter table tblesa
+    -> add column sal decimal(10,2) unsigned not null after ename;
+Query OK, 0 rows affected (0.026 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+#20
+MariaDB [dbsu]> desc tblesa;
++-------+------------------------+------+-----+---------+----------------+
+| Field | Type                   | Null | Key | Default | Extra          |
++-------+------------------------+------+-----+---------+----------------+
+| eid   | int(11)                | NO   | PRI | NULL    | auto_increment |
+| ename | varchar(5)             | NO   |     | NULL    |                |
+| sal   | decimal(10,2) unsigned | NO   |     | NULL    |                |
+| npay  | decimal(10,2)          | YES  |     | NULL    |                |
++-------+------------------------+------+-----+---------+----------------+
+4 rows in set (0.013 sec)
+
+
+#21
+MariaDB [dbsu]> alter table tblesa
+    -> add column hra decimal(8,2) as (sal * 20.0 / 100) after sal;
+Query OK, 0 rows affected (0.014 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+#22
+MariaDB [dbsu]> desc tblesa;
++-------+------------------------+------+-----+---------+-------------------+
+| Field | Type                   | Null | Key | Default | Extra             |
++-------+------------------------+------+-----+---------+-------------------+
+| eid   | int(11)                | NO   | PRI | NULL    | auto_increment    |
+| ename | varchar(5)             | NO   |     | NULL    |                   |
+| sal   | decimal(10,2) unsigned | NO   |     | NULL    |                   |
+| hra   | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| npay  | decimal(10,2)          | YES  |     | NULL    |                   |
++-------+------------------------+------+-----+---------+-------------------+
+5 rows in set (0.013 sec)
+
+
+#23
+MariaDB [dbsu]> alter table tblesa
+    -> add column da decimal(8,2) as (sal * 15.0 / 100) after hra,
+    -> add column pf decimal(8,2) as (sal * 35.0 / 100) after da,
+    -> add column gpay decimal(11,2) as (sal + hra + da) after pf;
+Query OK, 0 rows affected (0.017 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+#24
+MariaDB [dbsu]> desc tblesa;
++-------+------------------------+------+-----+---------+-------------------+
+| Field | Type                   | Null | Key | Default | Extra             |
++-------+------------------------+------+-----+---------+-------------------+
+| eid   | int(11)                | NO   | PRI | NULL    | auto_increment    |
+| ename | varchar(5)             | NO   |     | NULL    |                   |
+| sal   | decimal(10,2) unsigned | NO   |     | NULL    |                   |
+| hra   | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| da    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| pf    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| gpay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
+| npay  | decimal(10,2)          | YES  |     | NULL    |                   |
++-------+------------------------+------+-----+---------+-------------------+
+8 rows in set (0.013 sec)
+
+
+#25
+MariaDB [dbsu]> alter table tblesa
+    -> drop column npay;
+Query OK, 0 rows affected (0.015 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+#26
+MariaDB [dbsu]> desc tblesa;
++-------+------------------------+------+-----+---------+-------------------+
+| Field | Type                   | Null | Key | Default | Extra             |
++-------+------------------------+------+-----+---------+-------------------+
+| eid   | int(11)                | NO   | PRI | NULL    | auto_increment    |
+| ename | varchar(5)             | NO   |     | NULL    |                   |
+| sal   | decimal(10,2) unsigned | NO   |     | NULL    |                   |
+| hra   | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| da    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| pf    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| gpay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
++-------+------------------------+------+-----+---------+-------------------+
+7 rows in set (0.012 sec)
+
+
+#27
+
+MariaDB [(none)]> use dbsu;
+Database changed
+MariaDB [dbsu]> alter table tblesa
+    -> add column npay decimal(11,2) as (gpay - pf);
+Query OK, 0 rows affected (0.014 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+#28
+MariaDB [dbsu]> desc tblesa;
++-------+------------------------+------+-----+---------+-------------------+
+| Field | Type                   | Null | Key | Default | Extra             |
++-------+------------------------+------+-----+---------+-------------------+
+| eid   | int(11)                | NO   | PRI | NULL    | auto_increment    |
+| ename | varchar(5)             | NO   |     | NULL    |                   |
+| sal   | decimal(10,2) unsigned | NO   |     | NULL    |                   |
+| hra   | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| da    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| pf    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| gpay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
+| npay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
++-------+------------------------+------+-----+---------+-------------------+
+8 rows in set (0.015 sec)
+
+
+#29
+MariaDB [dbsu]> select * from tblesa;
+Empty set (0.000 sec)
+
+
+#30
+
+MariaDB [dbsu]> select count(*) from tblesa;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.000 sec)
+
+
+#31
+
+MariaDB [dbsu]> insert into tblesa
+    -> (ename, sal) values
+    -> ('x4', 500000);
+Query OK, 1 row affected (0.000 sec)
+
+
+#32
+
+MariaDB [dbsu]> select * from tblesa;
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| eid  | ename | sal       | hra       | da       | pf        | gpay      | npay      |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| 1001 | x4    | 500000.00 | 100000.00 | 75000.00 | 175000.00 | 675000.00 | 500000.00 |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+1 row in set (0.000 sec)
+
+
+#33
+MariaDB [dbsu]> select count(*) from tblesa;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.000 sec)
+
+#34
+MariaDB [dbsu]> insert into tblesa
+    -> (ename, sal) values
+    -> ('x3', 300000),
+    -> ('x1', 100000),
+    -> ('x2', 200000),
+    -> ('x4', 400000);
+Query OK, 4 rows affected (0.000 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+
+#35
+MariaDB [dbsu]> select * from tblesa;
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| eid  | ename | sal       | hra       | da       | pf        | gpay      | npay      |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| 1001 | x4    | 500000.00 | 100000.00 | 75000.00 | 175000.00 | 675000.00 | 500000.00 |
+| 1002 | x3    | 300000.00 |  60000.00 | 45000.00 | 105000.00 | 405000.00 | 300000.00 |
+| 1003 | x1    | 100000.00 |  20000.00 | 15000.00 |  35000.00 | 135000.00 | 100000.00 |
+| 1004 | x2    | 200000.00 |  40000.00 | 30000.00 |  70000.00 | 270000.00 | 200000.00 |
+| 1005 | x4    | 400000.00 |  80000.00 | 60000.00 | 140000.00 | 540000.00 | 400000.00 |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+5 rows in set (0.001 sec)
+
+#36
+
+MariaDB [dbsu]> select count(*) from tblesa;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.000 sec)
+
+
+#37
+
+MariaDB [dbsu]> update tblesa set sal=sal - 100000;
+Query OK, 5 rows affected (0.001 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+#38
+
+MariaDB [dbsu]> select * from tblesa;
++------+-------+-----------+----------+----------+-----------+-----------+-----------+
+| eid  | ename | sal       | hra      | da       | pf        | gpay      | npay      |
++------+-------+-----------+----------+----------+-----------+-----------+-----------+
+| 1001 | x4    | 400000.00 | 80000.00 | 60000.00 | 140000.00 | 540000.00 | 400000.00 |
+| 1002 | x3    | 200000.00 | 40000.00 | 30000.00 |  70000.00 | 270000.00 | 200000.00 |
+| 1003 | x1    |      0.00 |     0.00 |     0.00 |      0.00 |      0.00 |      0.00 |
+| 1004 | x2    | 100000.00 | 20000.00 | 15000.00 |  35000.00 | 135000.00 | 100000.00 |
+| 1005 | x4    | 300000.00 | 60000.00 | 45000.00 | 105000.00 | 405000.00 | 300000.00 |
++------+-------+-----------+----------+----------+-----------+-----------+-----------+
+5 rows in set (0.000 sec)
+
+#39
+
+MariaDB [dbsu]> update tblesa set sal=sal + 100000;
+Query OK, 5 rows affected (0.000 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+
+#40
+MariaDB [dbsu]> select * from tblesa;
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| eid  | ename | sal       | hra       | da       | pf        | gpay      | npay      |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| 1001 | x4    | 500000.00 | 100000.00 | 75000.00 | 175000.00 | 675000.00 | 500000.00 |
+| 1002 | x3    | 300000.00 |  60000.00 | 45000.00 | 105000.00 | 405000.00 | 300000.00 |
+| 1003 | x1    | 100000.00 |  20000.00 | 15000.00 |  35000.00 | 135000.00 | 100000.00 |
+| 1004 | x2    | 200000.00 |  40000.00 | 30000.00 |  70000.00 | 270000.00 | 200000.00 |
+| 1005 | x4    | 400000.00 |  80000.00 | 60000.00 | 140000.00 | 540000.00 | 400000.00 |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+5 rows in set (0.000 sec)
+
+#41
+MariaDB [dbsu]> desc tblesa;
++-------+------------------------+------+-----+---------+-------------------+
+| Field | Type                   | Null | Key | Default | Extra             |
++-------+------------------------+------+-----+---------+-------------------+
+| eid   | int(11)                | NO   | PRI | NULL    | auto_increment    |
+| ename | varchar(5)             | NO   |     | NULL    |                   |
+| sal   | decimal(10,2) unsigned | NO   |     | NULL    |                   |
+| hra   | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| da    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| pf    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| gpay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
+| npay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
++-------+------------------------+------+-----+---------+-------------------+
+8 rows in set (0.013 sec)
+
+#42
+
+MariaDB [dbsu]> alter table tblesa
+    -> modify column ename varchar(10);
+Query OK, 5 rows affected (0.016 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+#43
+
+MariaDB [dbsu]> desc tblesa;
++-------+------------------------+------+-----+---------+-------------------+
+| Field | Type                   | Null | Key | Default | Extra             |
++-------+------------------------+------+-----+---------+-------------------+
+| eid   | int(11)                | NO   | PRI | NULL    | auto_increment    |
+| ename | varchar(10)            | YES  |     | NULL    |                   |
+| sal   | decimal(10,2) unsigned | NO   |     | NULL    |                   |
+| hra   | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| da    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| pf    | decimal(8,2)           | YES  |     | NULL    | VIRTUAL GENERATED |
+| gpay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
+| npay  | decimal(11,2)          | YES  |     | NULL    | VIRTUAL GENERATED |
++-------+------------------------+------+-----+---------+-------------------+
+8 rows in set (0.014 sec)
+
+
+#44
+MariaDB [dbsu]> select * from tblesa;
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| eid  | ename | sal       | hra       | da       | pf        | gpay      | npay      |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| 1001 | x4    | 500000.00 | 100000.00 | 75000.00 | 175000.00 | 675000.00 | 500000.00 |
+| 1002 | x3    | 300000.00 |  60000.00 | 45000.00 | 105000.00 | 405000.00 | 300000.00 |
+| 1003 | x1    | 100000.00 |  20000.00 | 15000.00 |  35000.00 | 135000.00 | 100000.00 |
+| 1004 | x2    | 200000.00 |  40000.00 | 30000.00 |  70000.00 | 270000.00 | 200000.00 |
+| 1005 | x4    | 400000.00 |  80000.00 | 60000.00 | 140000.00 | 540000.00 | 400000.00 |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+5 rows in set (0.000 sec)
+
+
+#45
+MariaDB [dbsu]> alter table tblesa
+    -> modify column ename text collate latin1_swedish_ci;
+Query OK, 5 rows affected (0.015 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+#46
+
+MariaDB [dbsu]> select * from tblesa;
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| eid  | ename | sal       | hra       | da       | pf        | gpay      | npay      |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+| 1001 | x4    | 500000.00 | 100000.00 | 75000.00 | 175000.00 | 675000.00 | 500000.00 |
+| 1002 | x3    | 300000.00 |  60000.00 | 45000.00 | 105000.00 | 405000.00 | 300000.00 |
+| 1003 | x1    | 100000.00 |  20000.00 | 15000.00 |  35000.00 | 135000.00 | 100000.00 |
+| 1004 | x2    | 200000.00 |  40000.00 | 30000.00 |  70000.00 | 270000.00 | 200000.00 |
+| 1005 | x4    | 400000.00 |  80000.00 | 60000.00 | 140000.00 | 540000.00 | 400000.00 |
++------+-------+-----------+-----------+----------+-----------+-----------+-----------+
+5 rows in set (0.001 sec)
+
+#47
+
+MariaDB [dbsu]> set @day='Sunday is a first day of week';
+Query OK, 0 rows affected (0.001 sec)
+
+
+#48
+
+MariaDB [dbsu]> select @day;
++-------------------------------+
+| @day                          |
++-------------------------------+
+| Sunday is a first day of week |
++-------------------------------+
+1 row in set (0.000 sec)
+
+
+#49
+
+MariaDB [dbsu]> set @pwd='0.to.9,A2Z,a2z';
+Query OK, 0 rows affected (0.000 sec)
+
+
+#50
+
+MariaDB [dbsu]> set @ae=aes_encrypt(@day, @pwd);
+Query OK, 0 rows affected (0.002 sec)
+
+
+#51
+MariaDB [dbsu]> select @day;
++-------------------------------+
+| @day                          |
++-------------------------------+
+| Sunday is a first day of week |
++-------------------------------+
+1 row in set (0.000 sec)
+
+
+#52
+MariaDB [dbsu]> select @ae;
++--------------------------------+
+| @ae                            |
++--------------------------------+
+| cb% .#zK̴MUU*207p9              |
++--------------------------------+
+1 row in set (0.000 sec)
+
+#53
+MariaDB [dbsu]> set @ad=aes_decrypt(@ae, @pwd);
+Query OK, 0 rows affected (0.000 sec)
+
+
+#54
+MariaDB [dbsu]> select @day;
++------+
+| @day |
++------+
+| NULL |
++------+
+1 row in set (0.000 sec)
+
+
+#55
+MariaDB [dbsu]> select @ae;
++----------------------------------+
+| @ae                              |
++----------------------------------+
+| cb% .#zK̴MUU*207p9              |
++----------------------------------+
+1 row in set (0.000 sec)
+
+#56
+MariaDB [dbsu]> select @ad;
++-------------------------------+
+| @ad                           |
++-------------------------------+
+| Sunday is a first day of week |
++-------------------------------+
+1 row in set (0.000 sec)
+
+#57
+MariaDB [dbsu]> set @pd='fox is one of the category of animal';
+Query OK, 0 rows affected (0.000 sec)
+
+
+#58
+
+MariaDB [dbsu]> set @pwd1='0to9', @pwd2='A2Z', @pwd3='a2z';
+Query OK, 0 rows affected (0.000 sec)
+
+
+#59
+
+MariaDB [dbsu]> set @pd='fox is one of the category of animal';
+Query OK, 0 rows affected (0.000 sec)
+
+
+#60
+MariaDB [dbsu]> set @pwd1='0to9', @pwd2='A2Z', @pwd3='a2z';
+Query OK, 0 rows affected (0.000 sec)
+
+
+#61
+MariaDB [dbsu]> set @ae=aes_encrypt(@pd, @pwd1);
+Query OK, 0 rows affected (0.000 sec)
+
+
+#62
+
+MariaDB [dbsu]> set @de=des_encrypt(@ae, @pwd2);
+Query OK, 0 rows affected, 1 warning (0.002 sec)
+
+
+#63
+
+MariaDB [dbsu]> set @ed=encode(@de, @pwd3);
+Query OK, 0 rows affected (0.001 sec)
+
+
+#64
+
+MariaDB [dbsu]> set @cd=compress(@ed);
+Query OK, 0 rows affected (0.001 sec)
+
+
+#65
+MariaDB [dbsu]> select @cd;
++--------------------------------------------------------------------------+
+| @cd                                                                      |
++--------------------------------------------------------------------------+
+| 9   x9 ibEaܞr?iyTWkYqhgyHF"Uu;                                   |
++--------------------------------------------------------------------------+
+1 row in set (0.000 sec)
+
+#66MariaDB [dbsu]> set @ud=uncompress(@cd);
+Query OK, 0 rows affected (0.000 sec)
+
+
+#67
+
+MariaDB [dbsu]> set @dd=decode(@ud, @pwd3);
+Query OK, 0 rows affected (0.000 sec)
+
+
+#68MariaDB [dbsu]> set @dd2=des_decrypt(@dd, @pwd2);
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+
+#69
+
+MariaDB [dbsu]> set @ad=aes_decrypt(@dd2, @pwd1);
+Query OK, 0 rows affected (0.000 sec)
+
+
+MariaDB [dbsu]> select @pd, @ad, @pd = @ad;
++--------------------------------------+--------------------------------------+-----------+
+| @pd                                  | @ad                                  | @pd = @ad |
++--------------------------------------+--------------------------------------+-----------+
+| fox is one of the category of animal | fox is one of the category of animal |         1 |
++--------------------------------------+--------------------------------------+-----------+
+1 row in set (0.000 sec)
+

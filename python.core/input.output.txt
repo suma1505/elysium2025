@@ -1,0 +1,368 @@
+#01
+MariaDB [(none)]> select 2 + 5;
++-------+
+| 2 + 5 |
++-------+
+|     7 |
++-------+
+1 row in set (0.000 sec)
+
+#02
+MariaDB [(none)]> select length('    ');
++----------------+
+| length('    ') |
++----------------+
+|              4 |
++----------------+
+1 row in set (0.000 sec)
+
+#03
+MariaDB [(none)]> select length(trim('   '));
++---------------------+
+| length(trim('   ')) |
++---------------------+
+|                   0 |
++---------------------+
+1 row in set (0.000 sec)
+
+#04
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+5 rows in set (0.001 sec)
+
+#05
+MariaDB [(none)]> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.000 sec)
+
+#06
+MariaDB [(none)]> drop database if exists dbsu;
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+#07
+MariaDB [(none)]> show warnings;
++-------+------+----------------------------------------------------+
+| Level | Code | Message                                            |
++-------+------+----------------------------------------------------+
+| Note  | 1008 | Can't drop database 'dbsu'; database doesn't exist |
++-------+------+----------------------------------------------------+
+1 row in set (0.000 sec)
+
+
+#08
+MariaDB [(none)]> create database if not exists dbsu
+    -> collate latin1_swedish_ci
+    -> charset latin1;
+Query OK, 1 row affected (0.001 sec)
+
+#09
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| dbsu               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+#10
+MariaDB [(none)]> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.000 sec)
+
+#11
+MariaDB [(none)]> use dbsu;
+Database changed
+
+#12
+MariaDB [dbsu]> select database();
++------------+
+| database() |
++------------+
+| dbsu       |
++------------+
+1 row in set (0.000 sec)
+
+#13
+MariaDB [dbsu]> show tables;
+Empty set (0.000 sec)
+
+#14
+MariaDB [dbsu]> drop table if exists tbler;
+Query OK, 0 rows affected, 1 warning (0.009 sec)
+
+#15
+
+MariaDB [dbsu]> show warnings;
++-------+------+----------------------------+
+| Level | Code | Message                    |
++-------+------+----------------------------+
+| Note  | 1051 | Unknown table 'dbsu.tbler' |
++-------+------+----------------------------+
+1 row in set (0.000 sec)
+
+#16
+MariaDB [dbsu]> create table if not exists tbler
+    -> (
+    -> rno int primary key auto_increment,
+    -> sname varchar(5) not null check(length(trim(sname)) > 0),
+    -> m1 numeric(5,2) unsigned default 0,
+    -> m2 numeric(5,2) unsigned default 0,
+    -> total numeric(6,2) as (m1+m2),
+    -> average numeric(5,2) as (total/2),
+    -> result enum('Fail', 'Pass') as (if(m1>34.4 and m2>34.4, 'Pass', 'Fail'))
+    -> ) auto_increment = 1001;
+Query OK, 0 rows affected (0.006 sec)
+
+#17
+MariaDB [dbsu]> show tables;
++----------------+
+| Tables_in_dbsu |
++----------------+
+| tbler          |
++----------------+
+1 row in set (0.000 sec)
+
+#18
+MariaDB [dbsu]> select * from tbler;
+Empty set (0.001 sec)
+
+#19
+MariaDB [dbsu]> select count(*) from tbler;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.000 sec)
+
+#20
+MariaDB [dbsu]> insert into tbler
+    -> (sname, m1, m2)
+    -> values
+    -> ('x5', 56.5, 63);
+Query OK, 1 row affected (0.001 sec)
+
+#21
+MariaDB [dbsu]> select * from tbler;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+1 row in set (0.000 sec)
+
+#22
+MariaDB [dbsu]> select count(*) from tbler;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.000 sec)
+
+#23
+MariaDB [dbsu]> insert into tbler
+    -> (sname, m1, m2)
+    -> values
+    -> ('x3', 36.5, 43),
+    -> ('x1', 52, 45.5),
+    -> ('x2', 98, 20),
+    -> ('x4', 59, 61);
+Query OK, 4 rows affected (0.002 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+#24
+MariaDB [dbsu]> select * from tbler;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
+| 1002 | x3    | 36.50 | 43.00 |  79.50 |   39.75 | Pass   |
+| 1003 | x1    | 52.00 | 45.50 |  97.50 |   48.75 | Pass   |
+| 1004 | x2    | 98.00 | 20.00 | 118.00 |   59.00 | Fail   |
+| 1005 | x4    | 59.00 | 61.00 | 120.00 |   60.00 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+5 rows in set (0.000 sec)
+
+#25
+MariaDB [dbsu]> select count(*) from tbler;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.000 sec)
+
+#26
+
+MariaDB [dbsu]> update tbler set  m2 = 72.5 where rno = 1004;
+Query OK, 1 row affected (0.000 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+#27
+MariaDB [dbsu]> select * from tbler;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
+| 1002 | x3    | 36.50 | 43.00 |  79.50 |   39.75 | Pass   |
+| 1003 | x1    | 52.00 | 45.50 |  97.50 |   48.75 | Pass   |
+| 1004 | x2    | 98.00 | 72.50 | 170.50 |   85.25 | Pass   |
+| 1005 | x4    | 59.00 | 61.00 | 120.00 |   60.00 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+5 rows in set (0.000 sec)
+
+#28
+
+MariaDB [dbsu]> select * from tbler where rno != 1004;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
+| 1002 | x3    | 36.50 | 43.00 |  79.50 |   39.75 | Pass   |
+| 1003 | x1    | 52.00 | 45.50 |  97.50 |   48.75 | Pass   |
+| 1005 | x4    | 59.00 | 61.00 | 120.00 |   60.00 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+4 rows in set (0.000 sec)
+
+#29
+MariaDB [dbsu]> select * from tbler where rno = 1004;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1004 | x2    | 98.00 | 72.50 | 170.50 |   85.25 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+1 row in set (0.000 sec)
+
+#30
+MariaDB [dbsu]> select * from tbler where rno > 1001 and rno <1005;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1002 | x3    | 36.50 | 43.00 |  79.50 |   39.75 | Pass   |
+| 1003 | x1    | 52.00 | 45.50 |  97.50 |   48.75 | Pass   |
+| 1004 | x2    | 98.00 | 72.50 | 170.50 |   85.25 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+3 rows in set (0.000 sec)
+
+#31
+MariaDB [dbsu]> select * from tbler where not (rno > 1001 and rno <1005);
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
+| 1005 | x4    | 59.00 | 61.00 | 120.00 |   60.00 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+2 rows in set (0.000 sec)
+
+#32
+
+MariaDB [dbsu]> select * from tbler where rno < 1003;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
+| 1002 | x3    | 36.50 | 43.00 |  79.50 |   39.75 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+2 rows in set (0.001 sec)
+
+#33
+
+MariaDB [dbsu]>  select * from tbler where rno > 1003;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1004 | x2    | 98.00 | 72.50 | 170.50 |   85.25 | Pass   |
+| 1005 | x4    | 59.00 | 61.00 | 120.00 |   60.00 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+2 rows in set (0.000 sec)
+
+#34
+MariaDB [dbsu]> select rno, result from tbler;
++------+--------+
+| rno  | result |
++------+--------+
+| 1001 | Pass   |
+| 1002 | Pass   |
+| 1003 | Pass   |
+| 1004 | Pass   |
+| 1005 | Pass   |
++------+--------+
+5 rows in set (0.000 sec)
+
+#35
+MariaDB [dbsu]> delete from tbler where rno >= 1004;
+Query OK, 2 rows affected (0.001 sec)
+
+#36
+MariaDB [dbsu]> select * from tbler;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
+| 1002 | x3    | 36.50 | 43.00 |  79.50 |   39.75 | Pass   |
+| 1003 | x1    | 52.00 | 45.50 |  97.50 |   48.75 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+3 rows in set (0.000 sec)
+
+#37
+MariaDB [dbsu]> delete from tbler where rno = 1003;
+Query OK, 1 row affected (0.000 sec)
+
+#38
+MariaDB [dbsu]> select * from tbler;
++------+-------+-------+-------+--------+---------+--------+
+| rno  | sname | m1    | m2    | total  | average | result |
++------+-------+-------+-------+--------+---------+--------+
+| 1001 | x5    | 56.50 | 63.00 | 119.50 |   59.75 | Pass   |
+| 1002 | x3    | 36.50 | 43.00 |  79.50 |   39.75 | Pass   |
++------+-------+-------+-------+--------+---------+--------+
+2 rows in set (0.000 sec)
+
+#39
+
+MariaDB [dbsu]> truncate table tbler;
+Query OK, 0 rows affected (0.004 sec)
+
+#40
+
+MariaDB [dbsu]> select * from tbler;
+Empty set (0.003 sec)
+
+#41
+MariaDB [dbsu]> show tables;
++----------------+
+| Tables_in_dbsu |
++----------------+
+| tbler          |
++----------------+
+1 row in set (0.001 sec)
+
+#42
+MariaDB [dbsu]> drop table tbler;
+Query OK, 0 rows affected (0.008 sec)
+
+#43
+MariaDB [dbsu]> show tables;
+Empty set (0.000 sec)
