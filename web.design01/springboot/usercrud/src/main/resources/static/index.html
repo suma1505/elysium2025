@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users List</title>
+    <style>
+        #users{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .user{
+            height: 200px;
+            width: 250px;
+            background-color: lightgreen;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="users"></div>
+
+<script>
+    let users = document.getElementById("users");
+    users.innerHTML = "";
+
+    fetch("http://localhost:8080/api/user")
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(u => {
+            users.innerHTML+=`
+            <div class="user">
+                <h2>Name: ${u.name}</h2>
+                <h4>Email: ${u.email}</h4>
+                <p>Password: ${u.password}</p>
+                <button onclick = "signedin()">Get</button>
+            </div>`
+        })
+    })
+    .catch((err)=>console.log(err))
+
+    function signedin(){
+        alert("welcome user")
+    }
+
+</script>
+</body>
+</html>
