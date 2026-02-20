@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Employye Salary Allowance
+    </title>
+    <script>
+        function btnCancel_onclick() {
+            location.href ="p002.esa.html";
+        }
+
+        function btnFind_onclick() {
+           var sal=0, hra=0, da=0, pf=0, npay=0, gpay=0;
+           
+           sal=numsal.value;
+           sal=parseFloat(sal);
+           sal=isNaN(sal) ? 0 : sal;
+
+           hra=sal *20/100;
+           da= sal*15/100;
+           pf=sal*35/100;
+           gpay=sal + hra + da;
+           npay=gpay-pf;
+
+           numhra.value=hra;
+           numda.value=da;
+           numpf.value=pf;
+           numgpay.value=gpay;
+           numnpay.value=npay;
+
+        }
+    </script>
+</head>
+
+<table border="1">
+    <tr>
+        <td>Employee id</td>
+        <td><input type="number" id="numeid" placeholder="0"></td>
+    </tr>
+    <tr>
+        <td>Employee Name</td>
+        <td><input type="text" id="tbxename" placeholder="unknown"></td>
+    </tr>
+    <tr>
+        <td>Salary</td>
+        <td><input type="number" id="numsal" placeholder="0.0"></td>
+    </tr>
+    <tr>
+        <td>Hra</td>
+        <td><input type="number" id="numhra" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Da</td>
+        <td><input type="number" id="numda" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Pf</td>
+        <td><input type="number" id="numpf" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Gpay</td>
+        <td><input type="number" id="numgpay" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Npay</td>
+        <td><input type="number" id="numnpay" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="cancel" onclick="btnCancel_onclick();"></td>
+        <td><input type="button" value="find" onclick="btnFind_onclick();"></td>
+    </tr>
+</table>
