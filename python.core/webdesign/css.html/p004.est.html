@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Employee Salary Tax
+    </title>
+    <script>
+        function btnCancel_onclick() {
+            location.href="p004.est.html";
+        }
+
+        function btnFind_onclick() {
+            var sal=0, tax10=0, tax20=0, tax30=0, tottax=0, np=0;
+
+            sal=numsal.value;
+            sal=parseFloat(sal);
+            sal=isNaN(sal) ? 0 : sal;
+
+            if (sal > 1000000){
+                tax10=250000 * 10/100;
+                tax20=500000 * 20/100;
+                tax30=(sal - 1000000) * 30/100;
+            }
+            else if(sal > 500000){
+                tax10=250000 *10/100;
+                tax20=(sal - 500000) * 20/100; 
+            }
+            else if(sal > 250000){
+                tax10=(sal - 250000) * 10/100;
+            }
+
+            tottax=tax10 + tax20 + tax30;
+            np=sal - tottax;
+
+            numsal.value=sal;
+            numtax10.value=tax10;
+            numtax20.value=tax20;
+            numtax30.value=tax30;
+            numtottax.value=tottax;
+            numnp.value=np;
+        }
+    </script>
+</head>
+<table border="1">
+    <tr>
+        <td>Employye id</td>
+        <td><input type="number" id="numeid" placeholder="0"></td>
+    </tr>
+    <tr>
+        <td>Employye name</td>
+        <td><input type="text" id="tbxename" placeholder="unknown"></td>
+    </tr>
+    <tr>
+        <td>Salary</td>
+        <td><input type="number" id="numsal" placeholder="0"></td>
+    </tr>
+    <tr>
+        <td>Tax 10%</td>
+        <td><input type="number" id="numtax10" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Tax 20%</td>
+        <td><input type="number" id="numtax20" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Tax 30%</td>
+        <td><input type="number" id="numtax30" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Total tax</td>
+        <td><input type="number" id="numtottax" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td>Net pay</td>
+        <td><input type="number" id="numnp" placeholder="0.0" readonly="readonly"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="cancel" onclick="btnCancel_onclick()"></td>
+        <td><input type="button" value="find" onclick="btnFind_onclick()"></td>
+    </tr>
+</table>
