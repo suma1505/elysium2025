@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>Multiplication Table</title>
+    <script>
+        function btnCancel_onclick() {
+            location.href="p005.mn.html";
+        }
+        function btnFind_onclick() {
+            var mn=0, res="";
+            mn=nummn.value;
+            mn=parseInt(mn);
+            mn=isNaN(mn) ? 0 : mn;
+
+            nummn.value=mn;
+
+            for (let i = 1; i < 21; i++){
+                res += "<br>" + i + " x " + mn + " = " + (i * mn);
+            }
+            spnres.innerHTML = res;
+        }
+    </script>
+</head>
+<table border="1">
+    <tr>
+        <td>Multiplication Number</td>
+        <td><input type="number" id="nummn" placeholder="0"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="cancel" onclick="btnCancel_onclick();"></td>
+        <td><input type="button" value="find" onclick="btnFind_onclick();"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><span id="spnres">Wait...</span></td>
+    </tr>
+</table>
