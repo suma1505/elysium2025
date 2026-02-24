@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Salary Allowance</title>
+</head>
+<form method="post" action="/">
+    <table>
+        <tr>
+            <td>Employee Id</td>
+            <td><input type="number" name="numeid" value="{{eid}}" placeholder="0"></td>
+        </tr>
+        <tr>
+            <td>Employee Name</td>
+            <td><input type="text" name="tbxename" value="{{ename}}" placeholder="unknown"></td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td><input type="number" name="numsal" value="{{sal}}" step="any" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Hra</td>
+            <td><input type="number" name="numhra" value="{{hra}}" step="any"  readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Da</td>
+            <td><input type="number" name="numda" value="{{da}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Pf</td>
+            <td><input type="number" name="numpf" value="{{pf}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Gpay</td>
+            <td><input type="number" name="gpay" value="{{gpay}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Npay</td>
+            <td><input type="number" name="npay" value="{{npay}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="cancel" onclick="location.href='/';"></td>
+            <td><input type="submit" value="find"></td>
+        </tr>
+    </table>
+</form>

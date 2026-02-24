@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Electricity Bill</title>
+</head>
+<form method="post" action="/">
+    <table>
+        <tr>
+            <td>Employee Id</td>
+            <td><input type="number" name="numeid" value="{{eid}}" placeholder="0"></td>
+        </tr>
+        <tr>
+            <td>Employee Name</td>
+            <td><input type="text" name="tbxename" value="{{ename}}" placeholder="unknown"></td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td><input type="number" name="numsal" value="{{sal}}" step="any" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Tax 10%</td>
+            <td><input type="number" name="numtax10" value="{{tax10}}" step="any"  readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Tax 20%</td>
+            <td><input type="number" name="numtax20" value="{{tax20}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Tax 30%</td>
+            <td><input type="number" name="numtax30" value="{{tax30}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Total tax</td>
+            <td><input type="number" name="numtottax" value="{{tottax}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td>Net pay</td>
+            <td><input type="number" name="numnpay" value="{{npay}}" step="any" readonly="readonly" placeholder="0.0"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="cancel" onclick="location.href='/';"></td>
+            <td><input type="submit" value="find"></td>
+        </tr>
+    </table>
+</form>
