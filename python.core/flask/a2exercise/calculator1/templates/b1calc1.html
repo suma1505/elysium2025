@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<form method="post" action="/">
+    <table>
+        <tr>
+            <td>First Number</td>
+            <td><input type="number" name="numfno" value="{{fno}}" step="any"></td>
+        </tr>
+        <tr>
+            <td>Second Number</td>
+            <td><input type="number" name="numsno" value="{{sno}}" step="any"></td>
+        </tr>
+        <tr>
+            <td>Result</td>
+            <td><input type="text" value="{{res}}" step="any" readonly="readonly"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value="C" onclick="location.href='/'">
+                <input type="submit" value="+" name="sbtn">
+                <input type="submit" value="-" name="sbtn">
+                <input type="submit" value="x" name="sbtn">
+                <input type="submit" value="/" name="sbtn">
+                <input type="submit" value="%" name="sbtn">
+            </td>
+        </tr>
+    </table>
+</form>
+<body>
+
+</body>
+</html>
