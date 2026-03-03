@@ -1,0 +1,40 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Card</title>
+    <style>
+        .products{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .product{
+            background-color: lightblue;
+            padding: 10px;
+            width:240px;
+            border-radius: 30px;
+            box-shadow: 10px 20px 40px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="add-product.html">add new product</a>
+    <div id="products" class="products"></div>
+</body>
+<script>
+    let productcontainer = document.getElementById("products");
+    productcontainer.innerHTML="";
+    fetch("http://localhost:8080/api/products")
+        .then(res=>res.json())
+        .then((data)=>(data.map(d=>productcontainer.innerHTML+=`
+        <div class="product">
+            <img src="http://localhost:8080/uploads/${d.image}" height="200px" width:"230px">
+            <h2>Name:${d.name}</h2>
+            <p>Des:${d.des}</p>
+            <b>Price:${d.price}</b><br><br>
+            <button>Buy Now</button>
+      </div>
+    `)))
+</script>
+</html>
