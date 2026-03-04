@@ -1,0 +1,30 @@
+icrosoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>D:
+
+D:\>cd su
+
+D:\su>python\web.django\non.ide
+'python\web.django\non.ide' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\su>cd python\web.django\non.ide
+
+D:\su\python\web.django\non.ide>dir/b
+prj1a
+
+D:\su\python\web.django\non.ide>cd prj1a
+
+D:\su\python\web.django\non.ide\prj1a>dir/b
+db.sqlite3
+manage.py
+prj1a
+
+D:\su\python\web.django\non.ide\prj1a>python manage.py startapp app01calc1
+
+D:\su\python\web.django\non.ide\prj1a>dir/b
+app01calc1
+db.sqlite3
+manage.py
+prj1a
