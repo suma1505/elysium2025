@@ -1,0 +1,49 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>django-admin --version
+5.2.6
+
+C:\Windows\system32>python --version
+Python 3.13.12
+
+C:\Windows\system32>pip --version
+pip 25.3 from C:\Program Files\Python313\Lib\site-packages\pip (python 3.13)
+
+C:\Windows\system32>D:
+
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>D:
+
+D:\>cd su\python\web.django2
+
+D:\su\python\web.django2>dir/b
+
+D:\su\python\web.django2>django-admin startproject prj1a
+
+D:\su\python\web.django2>dir/b
+prj1a
+
+D:\su\python\web.django2>cd prj1a
+
+D:\su\python\web.django2\prj1a>dir/b
+manage.py
+prj1a
+
+D:\su\python\web.django2\prj1a>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+February 27, 2026 - 23:35:28
+Django version 5.2.6, using settings 'prj1a.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
