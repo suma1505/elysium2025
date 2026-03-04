@@ -1,0 +1,12 @@
+
+C:\Windows\system32>pip show pymongo
+Name: pymongo
+Version: 4.16.0
+Summary: PyMongo - the Official MongoDB Python driver
+Home-page: https://www.mongodb.org
+Author: The MongoDB Python Team
+Author-email:
+License-Expression: Apache-2.0
+Location: C:\Program Files\Python313\Lib\site-packages
+Requires: dnspython
+Required-by:

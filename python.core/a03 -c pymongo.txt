@@ -1,0 +1,1 @@
+C:\Windows\system32>python -c "from pymongo import MongoClient
