@@ -1,0 +1,43 @@
+Enterprise test> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+i=2.5
+j=3.6
+i + j
+
+
+6.1
+Enterprise test> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+i=5.2
+j=4.5
+print(i, '+', j, '=', i+j)
+
+5.2 + 4.5 = 9.7
+
+Enterprise test> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+i=5
+i
+j=2
+j
+i+j
+
+7
+Enterprise test> .editor
+// Entering editor mode (Ctrl+D to finish, Ctrl+C to cancel)
+i=5
+print(i)
+
+j=2
+print(j)
+
+print(i+j)
+
+5
+2
+7
+
+Enterprise test> print('Today:', date())
+ReferenceError: date is not defined
+Enterprise test> print('Today:', Date())
+Today: Thu Mar 05 2026 12:38:01 GMT+0530 (India Standard Time)

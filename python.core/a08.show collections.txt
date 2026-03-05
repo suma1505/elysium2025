@@ -1,0 +1,4 @@
+
+Enterprise test> show tables
+
+Enterprise test> show collections

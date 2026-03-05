@@ -1,0 +1,54 @@
+
+Enterprise test> show profile
+db.system.profile is empty.
+Use db.setProfilingLevel(2) will enable profiling.
+Use db.getCollection('system.profile').find() to show raw profile entries.
+Enterprise test> show users
+[]
+Enterprise test> show roles
+[
+  {
+    role: 'userAdmin',
+    db: 'test',
+    isBuiltin: true,
+    roles: [],
+    inheritedRoles: []
+  },
+  {
+    role: 'readWrite',
+    db: 'test',
+    isBuiltin: true,
+    roles: [],
+    inheritedRoles: []
+  },
+  {
+    role: 'dbOwner',
+    db: 'test',
+    isBuiltin: true,
+    roles: [],
+    inheritedRoles: []
+  },
+  {
+    role: 'dbAdmin',
+    db: 'test',
+    isBuiltin: true,
+    roles: [],
+    inheritedRoles: []
+  },
+  {
+    role: 'enableSharding',
+    db: 'test',
+    isBuiltin: true,
+    roles: [],
+    inheritedRoles: []
+  },
+  {
+    role: 'read',
+    db: 'test',
+    isBuiltin: true,
+    roles: [],
+    inheritedRoles: []
+  }
+]
+Enterprise test> show logs
+[ 'global', 'startupWarnings' ]
